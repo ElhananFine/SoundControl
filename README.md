@@ -12,6 +12,6 @@ The library exposes a class called `operatingSystem`. This class contains two fu
 Example: 
 ```js
 const { operatingSystem } = require("musicsound");
-operatingSystem.getVolume(50).then(vol => console.log(vol)).catch(err => console.log(err))
-operatingSystem.setVolume().then(vol => console.log(vol)).catch(err => console.log(err))
+operatingSystem.getVolume().then(vol => console.log(vol)).catch(err => console.log(err))
+operatingSystem.setVolume(50).then(vol => console.log(vol)).catch(err => console.log(err))
 ```
