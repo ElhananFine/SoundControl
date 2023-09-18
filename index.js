@@ -31,16 +31,16 @@ class Linux {
 
 class Windows {
   constructor() {
-    this.loudness = require("loudness");
+    this.exec = require("child_process").exec;
   }
 
   setVolume(volume) {
     // prettier-ignore
-    return new Promise((res, rej) => this.loudness.setVolume(volume, err => err ? rej(err) : res(volume)))
+    return new Promise((res, rej) => this.exec(`nircmd.exe setsysvolume ${volume}`, err => err ? rej(err) : res(volume)))
   }
   getVolume() {
     // prettier-ignore
-    return new Promise((res, rej) => this.loudness.getVolume((err, volume) => err ? rej(err) : res(volume)));
+    return new Promise((res, rej) => this.exec("nircmd.exe changesysvolume -1", (err, volume) => err ? rej(err) : res(+volume)));
   }
 }
 
